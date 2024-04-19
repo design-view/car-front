@@ -10,6 +10,7 @@ import CarDetail from './components/CarDetail';
 import Main from './components/Main';
 import CarPageList from './components/CarPageList';
 import List from './components/List';
+import DealerReg from './components/DealerReg';
 
 function App() {
   //로그인 한상태인지 상태관리
@@ -25,6 +26,7 @@ function App() {
         <Route path="/join" element={<Join/>} />
         <Route path='/addCar' element={<CarAdd/>} />
         <Route path='/carDetail/:carId' element={<CarDetail/>} />
+        <Route path='/dealer' element={<DealerReg/>} />
       </Routes>
       </div>
     </div>

@@ -5,7 +5,7 @@ import useAsync from '../customHook/useAsync';
 
 async function getCategory(id,maker){
     const response = await axios.get
-    ("http://localhost:8081/category?category="+id+"&maker="+maker);
+    ("http://localhost:8081/car/category?category="+id+"&maker="+maker);
     console.log(response);
     return response.data;
 }
@@ -112,7 +112,7 @@ function CarAdd() {
         carformData.append("makerId",cate.maker);
         try{
             const response = await axios.post(
-                "http://localhost:8081/addCar",carformData, {
+                "http://localhost:8081/dealer/addCar",carformData, {
                     headers: {
                       "Content-Type": "multipart/form-data",
                     },

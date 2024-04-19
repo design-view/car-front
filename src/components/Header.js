@@ -40,11 +40,12 @@ function Header({isAuthenticated,setAuth}) {
         </li><li className="nav-item">
             <Link to="/join"> 회원가입</Link>
         </li></> }
-       
-        
         <li className="nav-item">
             <Link to="/addCar">자동차등록</Link>
-        </li>  
+        </li> 
+        <li className="nav-item">
+            <Link to="/dealer">딜러신청</Link>
+        </li> 
       </ul>
       <form className="d-flex" role="search">
         <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>

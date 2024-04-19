@@ -35,7 +35,7 @@ function Login({setAuth}) {
     async function memberLogin(){
         try{
             const response = await axios.post(
-                "http://localhost:8081/member/login",formData);
+                "http://localhost:8081/site/login",formData);
             //로그인 성공시 받은 토큰을 세션스토리지(브라우저 저장소)에 저장
             //response.data { grantType: "Bdddd", accessToken:"ddfddfdfdfdd",}
             const jwtToken = response.data.grantType+" "+response.data.accessToken;

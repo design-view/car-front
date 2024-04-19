@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 //전달할 함수
 async function getCars(id){
-    const response = await axios.get("http://localhost:8081/cars/"+id);
+    const response = await axios.get("http://localhost:8081/car/cars?categoryId="+id);
     return response.data;
 }
 function CarList({id}) {
@@ -17,9 +17,9 @@ function CarList({id}) {
     if(!data) return null;
     return ( 
         <div className='mainlist'>
-            {data.map((car,index)=>
+            {data.dtoList.map((car,index)=>
                 <div className="card" style={{width: "18rem"}} key={index}>
-                    <img src={"http://localhost:8081/image?image="+car.imgName} 
+                    <img src={"http://localhost:8081/car/image?image="+car.imgName} 
                         className="card-img-top" alt="..."/>
                     <div className="card-body">
                         <h5 className="card-title">{car.title}</h5>

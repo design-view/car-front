@@ -6,7 +6,7 @@ import { Link, useParams } from 'react-router-dom';
 //함수
 async function getCarList(id,maker,model){
     //http://localhost:8081/carlist?categoryId=1&maker=5&model=4
-    const response = await axios.get("http://localhost:8081/carlist?categoryId="+id
+    const response = await axios.get("http://localhost:8081/car/carlist?categoryId="+id
     +"&maker="+maker+"&model="+model);
     return response.data;
 }
@@ -36,7 +36,7 @@ function CarPageList({categoryId, maker, model}) {
                 <tbody>
                     {data.map((car,index)=>(
                         <tr key={index}>
-                            <td><img src={"http://localhost:8081/image?image="+car.imgName} 
+                            <td><img src={"http://localhost:8081/car/image?image="+car.imgName} 
                             width="160px" /></td>
                             <td> <Link to={"/carDetail/"+car.id}>
                                 {car.title}</Link></td>

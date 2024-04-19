@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import useAsync from '../customHook/useAsync';
 
 async function getCategory(category,maker){
-    const response = await axios.get("http://localhost:8081/category?category="
+    const response = await axios.get("http://localhost:8081/car/category?category="
     +category+"&maker="+maker);
     return response.data;
 }
@@ -62,7 +62,7 @@ function Category({categoryId,keyword,onSearch}) {
                 <ul>
                     {data.models.map(li=>(
                         <li key={li.id} onClick={()=>{ 
-                            onSearch({"model":li.modelName})
+                            onSearch({model:li.modelName})
                             setModelView(false)
                             }}>
                         {li.modelName}

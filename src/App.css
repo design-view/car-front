@@ -37,6 +37,12 @@
   padding: 16px 20px;
   width: 240px;
 }
+
+
+.category {
+  position: relative;
+  padding-bottom: 50px;
+}
 .makerDiv, .modelDiv {
   border: 1px solid #ccc;
   position: absolute;
@@ -46,19 +52,12 @@
   display: none;
   width: 100%;
 }
-.makerDiv li, .modelDiv li {
-  padding-bottom: 10px;
-}
-
-.category {
-  position: relative;
-  padding-bottom: 50px;
-}
 .view {
   display: block;
 }
 
 /* 스타일추가 */
+
 .App a {
   color: #222;
   text-decoration: none;
@@ -73,4 +72,5 @@
 } 
 .makerDiv li, .modelDiv li {
   width: 23%;
+  padding-bottom: 10px;
 }

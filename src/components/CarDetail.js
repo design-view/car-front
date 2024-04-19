@@ -5,7 +5,7 @@ import axios from 'axios';
 import useAsync from '../customHook/useAsync';
 //전달할 함수 http://localhost:8081/car/12
 async function getCar(id){
-    const response = await axios.get("http://localhost:8081/car/"+id);
+    const response = await axios.get("http://localhost:8081/car/car/"+id);
     return response.data;
 }
 
@@ -30,7 +30,7 @@ function CarDetail() {
             <div className='detail'>
                 <div className='detailView'>
                     <div className='viewImg'>
-                    <img src={"http://localhost:8081/image?image="
+                    <img src={"http://localhost:8081/car/image?image="
                     +(bigImg==null ? data.carImageDtos[0].imgName: bigImg)} 
                         className="card-img-top" style={{width:"100%"}} alt="..."/ >
                     </div>
