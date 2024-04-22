@@ -1,9 +1,12 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-function Header({isAuthenticated,setAuth}) {
+function Header({role,isAuthenticated,setAuth}) {
     const logout = () => {
         sessionStorage.removeItem("jwt");
+        sessionStorage.removeItem("email");
+        sessionStorage.removeItem("role");
+        sessionStorage.removeItem("dealerId");
         setAuth(false);
     }
     //컴포넌트가 화면에 마운트될때 sessionStorage에 jwt가 존재하면
@@ -42,10 +45,17 @@ function Header({isAuthenticated,setAuth}) {
         </li></> }
         <li className="nav-item">
             <Link to="/addCar">자동차등록</Link>
-        </li> 
+        </li>
+        <li className="nav-item">
+            <Link to="/dealerList">딜러자동차조회</Link>
+        </li>  
         <li className="nav-item">
             <Link to="/dealer">딜러신청</Link>
-        </li> 
+        </li>
+        {role==="ADMIN" && (<li className="nav-item">
+            <Link to="/admin">관리자</Link>
+        </li>)} 
+         
       </ul>
       <form className="d-flex" role="search">
         <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>

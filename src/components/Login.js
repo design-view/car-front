@@ -1,8 +1,8 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function Login({setAuth}) {
+function Login({setAuth,isAuthenticated}) {
     const navigate = useNavigate();
     const [formData,setFormData]  = useState({
         username:"",
@@ -40,6 +40,10 @@ function Login({setAuth}) {
             //response.data { grantType: "Bdddd", accessToken:"ddfddfdfdfdd",}
             const jwtToken = response.data.grantType+" "+response.data.accessToken;
             sessionStorage.setItem("jwt",jwtToken);
+            sessionStorage.setItem("email",response.data.email);
+            sessionStorage.setItem("role",response.data.role);
+            sessionStorage.setItem("dealerId",response.data.dealerId);
+            sessionStorage.setItem("memberId",response.data.memberId);
             setAuth(true);
             //메인페이지 이동
             navigate("/");
@@ -49,6 +53,13 @@ function Login({setAuth}) {
         }
        
     }
+    useEffect(()=>{
+        //login마운트될때 로그인햇는지 체크해서
+        //로그인했을경우 메인페이지로 이동 
+        if(isAuthenticated){
+            navigate("/")
+        }
+    },[])
     return ( 
         <div>
             <h2>로그인하기</h2>

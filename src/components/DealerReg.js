@@ -9,7 +9,7 @@ function DealerReg() {
         phone:"",
         message:"",
         location:"",
-        memberId:"2"
+        memberId:sessionStorage.getItem("memberId")
     })
     //input에 변경이일어났을때 상태 업데이트 
     const onChange = (e) => {
@@ -39,9 +39,17 @@ function DealerReg() {
         }
     }
     async function dealerRegister(){
+        //세션스토리지에 저장된 값을반환
+        const token =  sessionStorage.getItem("jwt");
+        //axios.post("경로",전송데이터,옵션)
         try{
             const response = await axios.post(
-                "http://localhost:8081/member/register",formData);
+                "http://localhost:8081/member/register",formData,
+                { 
+                    headers: {
+                    "Authorization":token
+                    }
+                });
             //ok, fail
             if(response.data=="ok"){
                 navigate("/")

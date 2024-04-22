@@ -28,7 +28,6 @@ function CarAdd() {
         registerNumber:"",   //차량등록번호
         year:"",             //년도
         price:"",            //가격(만원단위로 입력)
-        dealerId:"1",        //임시 
         displacement:"",     //배기량
         mileage:"",          //주행거리
         transmission: "자동",    //변속기 select 자동/수동/CVT/듀얼클러치
@@ -95,6 +94,7 @@ function CarAdd() {
         
     }
     async function registerCar(){
+        const dealerId = sessionStorage.getItem("dealerId");
         //carformData.append("CarAddDto", new Blob([JSON.stringify(formData)], { type: "multipart/form-data" }));
         carformData.append("title",formData.title);
         carformData.append("mileage",formData.mileage);
@@ -102,7 +102,7 @@ function CarAdd() {
         carformData.append("registerNumber",formData.registerNumber);
         carformData.append("year",formData.year);
         carformData.append("price",formData.price);
-        carformData.append("dealerId",1);
+        carformData.append("dealerId",dealerId);
         carformData.append("displacement",formData.displacement);
         carformData.append("cardesc",formData.cardesc);
         carformData.append("transmission",formData.transmission);
@@ -110,11 +110,13 @@ function CarAdd() {
         carformData.append("fuel",formData.fuel);
         carformData.append("categoryId",cate.category);
         carformData.append("makerId",cate.maker);
+        const token = sessionStorage.getItem("jwt");
         try{
             const response = await axios.post(
                 "http://localhost:8081/dealer/addCar",carformData, {
                     headers: {
                       "Content-Type": "multipart/form-data",
+                      "Authorization": token
                     },
                   });
             //ok, fail

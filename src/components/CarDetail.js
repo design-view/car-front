@@ -39,7 +39,7 @@ function CarDetail() {
                         {
                             data.carImageDtos.map(img=>(
                                 <li>
-                                    <img src={"http://localhost:8081/image?image="
+                                    <img src={"http://localhost:8081/car/image?image="
                                     +img.imgName } data-img={img.imgName} onMouseEnter={onImgch} 
                                 className="card-img-top" style={{width:"100%"}} 
                                 alt="..."/ ></li>
