@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import useAsync from '../customHook/useAsync';
 import { useNavigate, useParams } from 'react-router-dom';
+import EditCategory from './EditCategory';
 async function getCar(id){
     const response = await axios.get("http://localhost:8081/car/car/"+id);
     return response.data;
@@ -49,7 +50,9 @@ function DealerCarEdit() {
     return ( 
     <div>
         <h2>차량 수정 하기</h2>
+        
         <form onSubmit={onSubmit}>
+        <EditCategory categoryId={data.categoryId} makerId={data.makerId} modelId={data.modelId}/>
                 <input type="hidden" name="id" value={carId} />
                 <div class="mb-3">
                     <label for="title" className="form-label">제목</label>

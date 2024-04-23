@@ -47,13 +47,15 @@ function AdminDealerRegList() {
                     <td>{dealerReg.phone}</td>
                     <td>{dealerReg.location}</td>
                     <td>{dealerReg.message}</td>
-                    <td>{dealerReg.memberId} <button 
+                    <td>{dealerReg.memberId} 
+                    {dealerReg.dealerState==="신청" ? <button 
                     data-name={dealerReg.name} 
                     data-phone={dealerReg.phone}
                     data-location={dealerReg.location}
                     data-memberid={dealerReg.memberId}
                     onClick={addDealer}
-                    >승인</button></td>
+                    >승인</button> : <button>승인완료</button> }
+                    </td>
                 </tr>
                 )}
             </table>

@@ -34,17 +34,13 @@ function reducer(state,action){
             return state;
     }
 }
-function useAsync(callback,id=0,maker,model){
+function useAsync(callback,id=0,maker=0,model=0){
     const [state, dispatch] = useReducer(reducer,initialState);
     //데이터 요청
     //디폴트 매개변수 fetchDate(값)---> 없으면 ({category:1,maker:1})
-    async function fetchData(state={
-        category:0,
-        maker:0
-    }){
+    async function fetchData(category,maker){
         //loading의 value를 true로 상태 업데이트
         dispatch({ type:"LOADING"});
-        const {category,maker} = state;
         try{
             const data = await callback(category,maker);
             dispatch({ type:"SUCCESS", data: data})
@@ -71,7 +67,7 @@ function useAsync(callback,id=0,maker,model){
     //id값을 전달받으면 fetchDataCar()
     useEffect(()=>{
         if(id===0){
-            fetchData();
+            fetchData(maker,model);
         }else {
             fetchDataCar();
         }

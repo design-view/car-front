@@ -13,17 +13,14 @@ function Category({categoryId,keyword,onSearch}) {
     const [modelView, setModelView] = useState(false);
     
     const onChangeModel = (id) => {
-        refetch({
-            category:categoryId,
-            maker:id
-        })
+        refetch(categoryId,id)
     }
     
     const {loading,data,error} = state;
     useEffect(()=>{
         setMakerView(false);
         setModelView(false);
-        refetch({category:categoryId,maker:0});
+        refetch(categoryId,0);
     },[categoryId])
     if(loading) return <div>로딩중입니다.</div>
     if(error) return <div>에러가발생했습니다.</div>

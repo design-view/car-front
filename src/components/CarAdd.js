@@ -16,7 +16,7 @@ function CarAdd() {
         maker:1
     });
 
-    const [cateState,refetch] = useAsync(getCategory);
+    const [cateState,refetch] = useAsync(getCategory,0,0,0);
     const { loading,data,error} = cateState;
     const navigate = useNavigate();
 
@@ -81,7 +81,7 @@ function CarAdd() {
             ({
             ...state,
             [name]:value,
-            maker: name!="category" ? value : value==2 ? 6 : 1 
+            maker: name!=="category" ? value : value===2 ? 6 : 1 
             })
         );  
     }
@@ -130,7 +130,7 @@ function CarAdd() {
        
     }
     useEffect(() => {
-        refetch(cate);
+        refetch(cate.category,cate.maker);
     }, [cate]);
     if(loading) return <div>로딩중입니다.</div>;
     if(error) return <div>에러가 발생했습니다.</div>;
