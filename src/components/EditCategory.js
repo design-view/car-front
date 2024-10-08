@@ -1,11 +1,11 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import useAsync from '../customHook/useAsync';
-
+import { API_URL } from '../config/apiurl';
 
 async function getCategory(id,maker){
     const response = await axios.get
-    ("http://localhost:8081/car/category?category="+id+"&maker="+maker);
+    (`${API_URL}/car/category?category=`+id+"&maker="+maker);
     console.log(response);
     return response.data;
 }

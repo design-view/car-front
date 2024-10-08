@@ -2,10 +2,10 @@ import axios from 'axios';
 import React from 'react';
 import useAsync from '../customHook/useAsync';
 import { Link } from 'react-router-dom';
-
+import { API_URL } from '../config/apiurl';
 //전달할 함수
 async function getCars(id){
-    const response = await axios.get("http://localhost:8081/car/cars?categoryId="+id);
+    const response = await axios.get(`${API_URL}/car/cars?categoryId=`+id);
     return response.data;
 }
 function CarList({id}) {

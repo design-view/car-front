@@ -2,12 +2,12 @@ import axios from 'axios';
 import React from 'react';
 import useAsync from '../customHook/useAsync';
 import { Link } from 'react-router-dom';
-
+import { API_URL } from '../config/apiurl';
 //전달할 함수
 async function getCars(dealerId){
     const token = sessionStorage.getItem("jwt");
     //axios.get요청 axios.get("경로",{옵션})
-    const response= await axios.get("http://localhost:8081/dealer/carList?dealerId="+dealerId,{
+    const response= await axios.get(`${API_URL}/dealer/carList?dealerId=`+dealerId,{
         headers: {
             "Authorization": token
         }
@@ -39,7 +39,7 @@ function DealerCarList() {
             <tbody>
                 {data.map((car,index)=>(
                     <tr key={index}>
-                        <td><img src={"http://localhost:8081/car/image?image="+car.imgName} 
+                        <td><img src={`${API_URL}/car/image?image=`+car.imgName} 
                         width="160px" /></td>
                         <td> <Link to={"/carEdit/"+car.id}>
                             {car.title}</Link></td>

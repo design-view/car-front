@@ -1,9 +1,9 @@
 import axios from 'axios';
 import React from 'react';
 import useAsync from '../customHook/useAsync';
-
+import { API_URL } from '../config/apiurl';
 async function getDelaerReg(){
-    const response = await axios.get("http://localhost:8081/admin/dealerRegList",{
+    const response = await axios.get(`${API_URL}/admin/dealerRegList`,{
         headers: {
             "Authorization": sessionStorage.getItem("jwt")
         }

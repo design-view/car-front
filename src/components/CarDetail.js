@@ -3,9 +3,10 @@ import './CarDetail.css';
 import { useParams} from 'react-router-dom';
 import axios from 'axios';
 import useAsync from '../customHook/useAsync';
+import { API_URL } from '../config/apiurl';
 //전달할 함수 http://localhost:8081/car/12
 async function getCar(id){
-    const response = await axios.get("http://localhost:8081/car/car/"+id);
+    const response = await axios.get(`${API_URL}/car/car/`+id);
     return response.data;
 }
 

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import { API_URL } from '../config/apiurl';
 function DealerReg() {
     const navigate = useNavigate();
     const [formData,setFormData]  = useState({
@@ -44,7 +44,7 @@ function DealerReg() {
         //axios.post("경로",전송데이터,옵션)
         try{
             const response = await axios.post(
-                "http://localhost:8081/member/register",formData,
+                `${API_URL}/member/register`,formData,
                 { 
                     headers: {
                     "Authorization":token

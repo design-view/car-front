@@ -2,11 +2,11 @@ import axios from 'axios';
 import React, { useEffect } from 'react';
 import useAsync from '../customHook/useAsync';
 import { Link, useParams } from 'react-router-dom';
-
+import { API_URL } from '../config/apiurl';
 //함수
 async function getCarList(id,maker,model){
     //http://localhost:8081/carlist?categoryId=1&maker=5&model=4
-    const response = await axios.get("http://localhost:8081/car/carlist?categoryId="+id
+    const response = await axios.get(`${API_URL}/car/carlist?categoryId=`+id
     +"&maker="+maker+"&model="+model);
     return response.data;
 }

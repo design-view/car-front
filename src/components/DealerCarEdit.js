@@ -3,8 +3,9 @@ import React, { useState } from 'react';
 import useAsync from '../customHook/useAsync';
 import { useNavigate, useParams } from 'react-router-dom';
 import EditCategory from './EditCategory';
+import { API_URL } from '../config/apiurl';
 async function getCar(id){
-    const response = await axios.get("http://localhost:8081/car/car/"+id);
+    const response = await axios.get(`${API_URL}/car/car/`+id);
     return response.data;
 }
 function DealerCarEdit() {

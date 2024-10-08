@@ -2,10 +2,10 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useAsync from '../customHook/useAsync';
-
+import { API_URL } from '../config/apiurl';
 async function getCategory(id,maker){
     const response = await axios.get
-    ("http://localhost:8081/car/category?category="+id+"&maker="+maker);
+    (`${API_URL}/car/category?category=`+id+"&maker="+maker);
     console.log(response);
     return response.data;
 }
@@ -95,6 +95,7 @@ function CarAdd() {
     }
     async function registerCar(){
         const dealerId = sessionStorage.getItem("dealerId");
+        console.log("여기에요딜러아이디"+dealerId)
         //carformData.append("CarAddDto", new Blob([JSON.stringify(formData)], { type: "multipart/form-data" }));
         carformData.append("title",formData.title);
         carformData.append("mileage",formData.mileage);
@@ -111,6 +112,7 @@ function CarAdd() {
         carformData.append("categoryId",cate.category);
         carformData.append("makerId",cate.maker);
         const token = sessionStorage.getItem("jwt");
+        console.log("여기에요"+carformData);
         try{
             const response = await axios.post(
                 "http://localhost:8081/dealer/addCar",carformData, {
