@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import { API_URL } from '../config/apiurl';
 function Join() {
     const navigate = useNavigate();
     const [formData,setFormData]  = useState({
@@ -38,7 +38,7 @@ function Join() {
     async function memberJoin(){
         try{
             const response = await axios.post(
-                "http://localhost:8081/site/join",formData);
+                `${API_URL}/site/join`,formData);
             //ok, fail
             if(response.data=="ok"){
                 navigate("/login")
