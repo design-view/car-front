@@ -1,4 +1,4 @@
-import './App.css';
+
 import Header from './components/Header';
 import CarList from './components/CarList';
 import { Route, Routes } from 'react-router-dom';
@@ -17,7 +17,7 @@ import DealerCarList from './components/DealerCarList';
 import DealerCarEdit from './components/DealerCarEdit';
 import AdminRoutes from './components/AdminRoutes';
 import AdminMain from './components/AdminMain';
-
+import './App.css';
 function App() {
   //로그인 한상태인지 상태관리
   const [isAuthenticated, setAuth] = useState(false);
