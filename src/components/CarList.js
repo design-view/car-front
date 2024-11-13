@@ -2,7 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import useAsync from '../customHook/useAsync';
 import { Link } from 'react-router-dom';
-import { API_URL } from '../config/apiurl';
+import { API_URL, S3_URL } from '../config/apiurl';
 //전달할 함수
 async function getCars(id){
     const response = await axios.get(`${API_URL}/car/cars?categoryId=`+id);
@@ -19,7 +19,7 @@ function CarList({id}) {
         <div className='mainlist'>
             {data.dtoList.map((car,index)=>
                 <div className="card" style={{width: "18rem"}} key={index}>
-                    <img src={"http://localhost:8081/car/image?image="+car.imgName} 
+                    <img src={S3_URL+car.imgName} 
                         className="card-img-top" alt="..."/>
                     <div className="card-body">
                         <h5 className="card-title">{car.title}</h5>

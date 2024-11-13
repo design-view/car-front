@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect } from 'react';
 import useAsync from '../customHook/useAsync';
 import { Link, useParams } from 'react-router-dom';
-import { API_URL } from '../config/apiurl';
+import { API_URL, S3_URL } from '../config/apiurl';
 //함수
 async function getCarList(id,maker,model){
     //http://localhost:8081/carlist?categoryId=1&maker=5&model=4
@@ -36,8 +36,7 @@ function CarPageList({categoryId, maker, model}) {
                 <tbody>
                     {data.map((car,index)=>(
                         <tr key={index}>
-                            <td><img src={"http://localhost:8081/car/image?image="+car.imgName} 
-                            width="160px" /></td>
+                            <td><img src={S3_URL+car.imgName} width="160px" /></td>
                             <td> <Link to={"/carDetail/"+car.id}>
                                 {car.title}</Link></td>
                             <td>{car.year}</td>

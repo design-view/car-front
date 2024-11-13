@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams} from 'react-router-dom';
 import axios from 'axios';
 import useAsync from '../customHook/useAsync';
-import { API_URL } from '../config/apiurl';
+import { API_URL, S3_URL } from '../config/apiurl';
 import './CarDetail.css';
 //전달할 함수 http://localhost:8081/car/12
 async function getCar(id){
@@ -31,8 +31,8 @@ function CarDetail() {
             {/* 이미지 차량정보 */}
             <div className='detail'>
                 <div className='detailView'>
-                    <div className='viewImg'>
-                    <img src={"http://localhost:8081/car/image?image="
+                    <div className='viewImg'> 
+                    <img src={S3_URL
                     +(bigImg==null ? data.carImageDtos[0].imgName: bigImg)} 
                         className="card-img-top" style={{width:"100%"}} alt="..."/ >
                     </div>
@@ -41,7 +41,7 @@ function CarDetail() {
                         {
                             data.carImageDtos.map(img=>(
                                 <li>
-                                    <img src={"http://localhost:8081/car/image?image="
+                                    <img src={S3_URL
                                     +img.imgName } data-img={img.imgName} onMouseEnter={onImgch} 
                                 className="card-img-top" style={{width:"100%"}} 
                                 alt="..."/ ></li>
