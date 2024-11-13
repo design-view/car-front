@@ -115,7 +115,7 @@ function CarAdd() {
         console.log("여기에요"+carformData);
         try{
             const response = await axios.post(
-                "http://localhost:8081/dealer/addCar",carformData, {
+                API_URL,carformData, {
                     headers: {
                       "Content-Type": "multipart/form-data",
                       "Authorization": token
